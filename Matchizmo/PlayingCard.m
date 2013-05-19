@@ -18,8 +18,9 @@
 
 +(NSArray*) validSuits
 {
-    NSArray* suits = [[NSArray alloc] initWithObjects:@"♠",@"♣",@"♥",@"♦", nil];
-    return suits;
+    static NSArray* validSuits = nil;
+    if (!validSuits) validSuits = [[NSArray alloc] initWithObjects:@"♠",@"♣",@"♥",@"♦", nil];
+    return validSuits;
 }
 +(NSUInteger) maxRank
 {
@@ -45,7 +46,7 @@
     return rankStrings;
 }
 
--(void) setRank: rank
+-(void) setRank: (NSUInteger)rank
 {
     if (rank <= [PlayingCard maxRank]) {
         _rank = rank;

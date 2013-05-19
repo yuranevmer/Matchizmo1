@@ -7,8 +7,62 @@
 //
 
 #import "ViewController.h"
+#import "PlayingCardDeck.h"
+
+
+@interface ViewController ()
+
+@property (retain, nonatomic) IBOutlet UILabel *flipsLabel;
+@property (nonatomic) int flipCount;
+
+@property (nonatomic, retain) PlayingCardDeck* deck;
+@end
+
 
 @implementation ViewController
+@synthesize flipsLabel;
+@synthesize flipCount = _flipCount;
+@synthesize deck = _deck;
+-(void) setFlipCount:(int)flipCount
+{
+    _flipCount = flipCount;
+    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %i", self.flipCount];
+}
+
+-(PlayingCardDeck*) deck
+{
+    if (!_deck) _deck = [[PlayingCardDeck alloc] init];
+    return _deck;
+}
+
+- (IBAction)flipCard:(UIButton*)sender {
+    if (!sender.isSelected) {
+        NSString* newCardTitle = [self.deck drawRandomCard].contents;
+        [sender setTitle:newCardTitle forState: UIControlStateSelected];
+        sender.selected = YES;
+    } else {
+        sender.selected = NO;
+    }
+    self.flipCount++;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -26,6 +80,7 @@
 
 - (void)viewDidUnload
 {
+    [self setFlipsLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -57,4 +112,8 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (void)dealloc {
+    [flipsLabel release];
+    [super dealloc];
+}
 @end

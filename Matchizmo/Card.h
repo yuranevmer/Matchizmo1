@@ -10,6 +10,11 @@
 
 @interface Card : NSObject
 
-@property (nonatomic) NSUInteger rank;
-@property (nonatomic, retain) NSString* suit;
+
+@property (nonatomic,retain) NSString* contents;
+@property (nonatomic, getter = isFaceUp) BOOL faceUp;
+@property (nonatomic, getter = isUnplayable) BOOL unplayable;
+
+-(int)match:(NSArray*)otherCards;
+
 @end

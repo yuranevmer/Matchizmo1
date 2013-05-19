@@ -10,10 +10,20 @@
 
 @implementation Card
 
-@synthesize suit = _suit;
-@synthesize rank = _rank;
+@synthesize contents;
+@synthesize faceUp;
+@synthesize unplayable;
 
-
+-(int)match:(NSArray *)otherCards
+{
+    int score = 0;
+    for (Card* card in otherCards) {
+        if ([card.contents isEqualToString:self.contents] ) {
+            score = 1;
+        }
+    }
+    return score;
+}
 
 
 

@@ -97,10 +97,10 @@
 				840154B0174918380050EB5B /* PlayingCard.m */,
 				840154A517490E080050EB5B /* Deck.h */,
 				840154A617490E080050EB5B /* Deck.m */,
-				8401549A17490D130050EB5B /* ViewController.h */,
-				8401549B17490D130050EB5B /* ViewController.m */,
 				840154B2174922CE0050EB5B /* PlayingCardDeck.h */,
 				840154B3174922CE0050EB5B /* PlayingCardDeck.m */,
+				8401549A17490D130050EB5B /* ViewController.h */,
+				8401549B17490D130050EB5B /* ViewController.m */,
 				8401549D17490D140050EB5B /* ViewController.xib */,
 				8401548F17490D130050EB5B /* Supporting Files */,
 			);
@@ -304,6 +304,7 @@
 				840154A417490D140050EB5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
