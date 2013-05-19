@@ -1,0 +1,279 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8401548917490D130050EB5B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8401548817490D130050EB5B /* UIKit.framework */; };
+		8401548B17490D130050EB5B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8401548A17490D130050EB5B /* Foundation.framework */; };
+		8401548D17490D130050EB5B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8401548C17490D130050EB5B /* CoreGraphics.framework */; };
+		8401549317490D130050EB5B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8401549117490D130050EB5B /* InfoPlist.strings */; };
+		8401549517490D130050EB5B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8401549417490D130050EB5B /* main.m */; };
+		8401549917490D130050EB5B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8401549817490D130050EB5B /* AppDelegate.m */; };
+		8401549C17490D130050EB5B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8401549B17490D130050EB5B /* ViewController.m */; };
+		8401549F17490D140050EB5B /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8401549D17490D140050EB5B /* ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8401548417490D130050EB5B /* Matchizmo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchizmo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8401548817490D130050EB5B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8401548A17490D130050EB5B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8401548C17490D130050EB5B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8401549017490D130050EB5B /* Matchizmo-Info.plist */ = {isa = PBXFileReference; path = "Matchizmo-Info.plist"; sourceTree = "<group>"; };
+		8401549217490D130050EB5B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8401549417490D130050EB5B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8401549617490D130050EB5B /* Matchizmo-Prefix.pch */ = {isa = PBXFileReference; path = "Matchizmo-Prefix.pch"; sourceTree = "<group>"; };
+		8401549717490D130050EB5B /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		8401549817490D130050EB5B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8401549A17490D130050EB5B /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		8401549B17490D130050EB5B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8401549E17490D140050EB5B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8401548117490D130050EB5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8401548917490D130050EB5B /* UIKit.framework in Frameworks */,
+				8401548B17490D130050EB5B /* Foundation.framework in Frameworks */,
+				8401548D17490D130050EB5B /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8401547917490D130050EB5B = {
+			isa = PBXGroup;
+			children = (
+				8401548E17490D130050EB5B /* Matchizmo */,
+				8401548717490D130050EB5B /* Frameworks */,
+				8401548517490D130050EB5B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8401548517490D130050EB5B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8401548417490D130050EB5B /* Matchizmo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8401548717490D130050EB5B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8401548817490D130050EB5B /* UIKit.framework */,
+				8401548A17490D130050EB5B /* Foundation.framework */,
+				8401548C17490D130050EB5B /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8401548E17490D130050EB5B /* Matchizmo */ = {
+			isa = PBXGroup;
+			children = (
+				8401549717490D130050EB5B /* AppDelegate.h */,
+				8401549817490D130050EB5B /* AppDelegate.m */,
+				8401549A17490D130050EB5B /* ViewController.h */,
+				8401549B17490D130050EB5B /* ViewController.m */,
+				8401549D17490D140050EB5B /* ViewController.xib */,
+				8401548F17490D130050EB5B /* Supporting Files */,
+			);
+			path = Matchizmo;
+			sourceTree = "<group>";
+		};
+		8401548F17490D130050EB5B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8401549017490D130050EB5B /* Matchizmo-Info.plist */,
+				8401549117490D130050EB5B /* InfoPlist.strings */,
+				8401549417490D130050EB5B /* main.m */,
+				8401549617490D130050EB5B /* Matchizmo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8401548317490D130050EB5B /* Matchizmo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 840154A217490D140050EB5B /* Build configuration list for PBXNativeTarget "Matchizmo" */;
+			buildPhases = (
+				8401548017490D130050EB5B /* Sources */,
+				8401548117490D130050EB5B /* Frameworks */,
+				8401548217490D130050EB5B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Matchizmo;
+			productName = Matchizmo;
+			productReference = 8401548417490D130050EB5B /* Matchizmo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8401547B17490D130050EB5B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 8401547E17490D130050EB5B /* Build configuration list for PBXProject "Matchizmo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8401547917490D130050EB5B;
+			productRefGroup = 8401548517490D130050EB5B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8401548317490D130050EB5B /* Matchizmo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8401548217490D130050EB5B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8401549317490D130050EB5B /* InfoPlist.strings in Resources */,
+				8401549F17490D140050EB5B /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8401548017490D130050EB5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8401549517490D130050EB5B /* main.m in Sources */,
+				8401549917490D130050EB5B /* AppDelegate.m in Sources */,
+				8401549C17490D130050EB5B /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8401549117490D130050EB5B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8401549217490D130050EB5B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8401549D17490D140050EB5B /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8401549E17490D140050EB5B /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		840154A017490D140050EB5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		840154A117490D140050EB5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		840154A317490D140050EB5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Matchizmo/Matchizmo-Prefix.pch";
+				INFOPLIST_FILE = "Matchizmo/Matchizmo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		840154A417490D140050EB5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Matchizmo/Matchizmo-Prefix.pch";
+				INFOPLIST_FILE = "Matchizmo/Matchizmo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8401547E17490D130050EB5B /* Build configuration list for PBXProject "Matchizmo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				840154A017490D140050EB5B /* Debug */,
+				840154A117490D140050EB5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		840154A217490D140050EB5B /* Build configuration list for PBXNativeTarget "Matchizmo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				840154A317490D140050EB5B /* Debug */,
+				840154A417490D140050EB5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8401547B17490D130050EB5B /* Project object */;
+}
