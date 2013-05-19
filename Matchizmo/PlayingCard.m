@@ -12,9 +12,6 @@
 
 -(NSString*) contents
 {
-    
-    
-    
     return [[[PlayingCard rankStrings] objectAtIndex:self.rank] stringByAppendingString:self.suit];
 }
 
@@ -41,6 +38,7 @@
     return _suit ? _suit : @"?";
 }
 
+@synthesize rank = _rank;
 +(NSArray*) rankStrings
 {
     NSArray* rankStrings = [[NSArray alloc] initWithObjects:@"?", @"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"10",@"J",@"Q",@"K",nil];

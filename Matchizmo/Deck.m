@@ -42,5 +42,6 @@ NSMutableArray* _cards;
         randomCard = [self.cards objectAtIndex:index];
         [self.cards removeObjectAtIndex:index];
     }
+    return randomCard;
 }
 @end
