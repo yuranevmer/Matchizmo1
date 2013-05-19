@@ -20,6 +20,7 @@
 
 
 @implementation ViewController
+
 @synthesize flipsLabel;
 @synthesize flipCount = _flipCount;
 @synthesize deck = _deck;
