@@ -1,5 +1,5 @@
 //
-//  Deck.h
+//  PlayingCard.h
 //  Matchizmo
 //
 //  Created by admin on 19.05.13.
@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "Card.h"
 
-@interface Deck : NSObject
+@interface PlayingCard : Card
 
--(void)addCard:(Card*)card atTop:(BOOL)atTop;
--(Card*)drawRandomCard;
+@property (nonatomic, retain) NSString* suit;
+@property (nonatomic) NSUInteger rank;
 
 
+
++(NSArray*) validSuits;
++(NSUInteger) maxRank;
 @end

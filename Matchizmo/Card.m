@@ -1,18 +1,21 @@
 //
-//  Deck.h
+//  Card.m
 //  Matchizmo
 //
 //  Created by admin on 19.05.13.
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "Card.h"
 
-@interface Deck : NSObject
+@implementation Card
 
--(void)addCard:(Card*)card atTop:(BOOL)atTop;
--(Card*)drawRandomCard;
+@synthesize suit = _suit;
+@synthesize rank = _rank;
+
+
+
+
 
 
 @end

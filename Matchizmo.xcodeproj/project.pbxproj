@@ -16,6 +16,8 @@
 		8401549C17490D130050EB5B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8401549B17490D130050EB5B /* ViewController.m */; };
 		8401549F17490D140050EB5B /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8401549D17490D140050EB5B /* ViewController.xib */; };
 		840154A717490E080050EB5B /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 840154A617490E080050EB5B /* Deck.m */; };
+		840154AE174911FF0050EB5B /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 840154AD174911FF0050EB5B /* Card.m */; };
+		840154B1174918380050EB5B /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 840154B0174918380050EB5B /* PlayingCard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,10 @@
 		8401549E17490D140050EB5B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		840154A517490E080050EB5B /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
 		840154A617490E080050EB5B /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
+		840154AC174911FF0050EB5B /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		840154AD174911FF0050EB5B /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		840154AF174918380050EB5B /* PlayingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCard.h; sourceTree = "<group>"; };
+		840154B0174918380050EB5B /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCard.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,10 @@
 			children = (
 				8401549717490D130050EB5B /* AppDelegate.h */,
 				8401549817490D130050EB5B /* AppDelegate.m */,
+				840154AC174911FF0050EB5B /* Card.h */,
+				840154AD174911FF0050EB5B /* Card.m */,
+				840154AF174918380050EB5B /* PlayingCard.h */,
+				840154B0174918380050EB5B /* PlayingCard.m */,
 				840154A517490E080050EB5B /* Deck.h */,
 				840154A617490E080050EB5B /* Deck.m */,
 				8401549A17490D130050EB5B /* ViewController.h */,
@@ -169,6 +179,8 @@
 				8401549917490D130050EB5B /* AppDelegate.m in Sources */,
 				8401549C17490D130050EB5B /* ViewController.m in Sources */,
 				840154A717490E080050EB5B /* Deck.m in Sources */,
+				840154AE174911FF0050EB5B /* Card.m in Sources */,
+				840154B1174918380050EB5B /* PlayingCard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
