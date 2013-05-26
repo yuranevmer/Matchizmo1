@@ -14,6 +14,7 @@
 
 @property (nonatomic, retain) CardMatchingGame* game;
 @property (retain, nonatomic) IBOutlet UILabel *flipsLabel;
+@property (retain, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (nonatomic) int flipCount;
 @property (nonatomic, retain) PlayingCardDeck* deck;
 @property (nonatomic, retain) NSArray* cardButtons;
@@ -40,6 +41,7 @@
 
 @synthesize game = _game;
 @synthesize flipsLabel;
+@synthesize scoreLabel = _scoreLabel;
 @synthesize flipCount = _flipCount;
 @synthesize deck = _deck;
 @synthesize cardButtons = _cardButtons;
@@ -94,13 +96,10 @@
         [cardButton setTitle:card.contents forState:UIControlStateSelected];
         [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
         cardButton.selected = card.isFaceUp;
-        cardButton.enabled = !card.isUnplayable;
+        cardButton.enabled = !card.isUnplayable && !card.isFaceUp;
         cardButton.alpha = card.isUnplayable ? 0.3 : 1;
     }
-    
-    
-    
-    
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score:%i",self.game.score];
 }
 
 - (IBAction)flipCard:(UIButton*)sender 
@@ -138,6 +137,7 @@
     [self setCard10:nil];
     [self setCard11:nil];
     [self setCard12:nil];
+    [self setScoreLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -183,6 +183,7 @@
     [_card10 release];
     [_card11 release];
     [_card12 release];
+    [_scoreLabel release];
     [super dealloc];
 }
 @end
