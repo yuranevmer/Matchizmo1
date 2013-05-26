@@ -12,12 +12,14 @@
 
 @property(nonatomic,retain) NSMutableArray* cards;
 @property(nonatomic) int score;
+@property(nonatomic, retain) NSString* lastFlipResult;
 @end
 
 @implementation CardMatchingGame
 
 @synthesize score = _score;
 @synthesize cards = _cards;
+@synthesize lastFlipResult = _lastFlipResult;
 
 -(NSMutableArray*) cards 
 {
@@ -55,6 +57,7 @@
 {
     Card* card = [self cardAtIndex:index];
     if (!card.isUnplayable) {
+        self.lastFlipResult = [NSString stringWithFormat:@"Flipped up %@",card.contents];
         for (Card* otherCard in self.cards) {
             if (otherCard.isFaceUp && !otherCard.isUnplayable) {
                 int matchScore = [card match:[NSArray arrayWithObject:otherCard]];
@@ -62,15 +65,25 @@
                     otherCard.unplayable = YES;
                     card.unplayable = YES;
                     self.score += matchScore * MATCH_BONUS;
+                    self.lastFlipResult = [NSString stringWithFormat:@"Match %@ & %@ for %i points",card.contents, otherCard.contents, MATCH_BONUS];
                 } else {
                     otherCard.faceUp = NO;
                     self.score -= MISMATCH_PENALTY;
+                    self.lastFlipResult = [NSString stringWithFormat:@"%@ & %@ don't match! %i point penalty!", card.contents, otherCard.contents, MISMATCH_PENALTY];
                 }
             }
         }
         self.score -= FLIP_COST;
     }
     card.faceUp = !card.isFaceUp;
+}
+
+-(NSString*) lastFlipResult
+{
+    if (!_lastFlipResult) {
+        _lastFlipResult = [[NSString alloc] initWithFormat:@"..."];
+    }
+    return _lastFlipResult;
 }
 
 @end

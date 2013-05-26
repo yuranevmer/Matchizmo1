@@ -15,6 +15,7 @@
 @property (nonatomic, retain) CardMatchingGame* game;
 @property (retain, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (retain, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (retain, nonatomic) IBOutlet UILabel *historyLabel;
 @property (nonatomic) int flipCount;
 @property (nonatomic, retain) PlayingCardDeck* deck;
 @property (nonatomic, retain) NSArray* cardButtons;
@@ -42,6 +43,7 @@
 @synthesize game = _game;
 @synthesize flipsLabel;
 @synthesize scoreLabel = _scoreLabel;
+@synthesize historyLabel = _historyLabel;
 @synthesize flipCount = _flipCount;
 @synthesize deck = _deck;
 @synthesize cardButtons = _cardButtons;
@@ -70,6 +72,12 @@
     return _cardButtons;
 }
 
+- (IBAction)newGame:(id)sender {
+    self.game = nil;
+    self.game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count usingDeck:self.deck];
+    self.flipCount = 0;
+    [self updateUI];
+}
 
 -(void) setFlipCount:(int)flipCount
 {
@@ -100,7 +108,11 @@
         cardButton.alpha = card.isUnplayable ? 0.3 : 1;
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"Score:%i",self.game.score];
+    self.historyLabel.text = self.game.lastFlipResult;
 }
+
+
+
 
 - (IBAction)flipCard:(UIButton*)sender 
 {
@@ -138,6 +150,7 @@
     [self setCard11:nil];
     [self setCard12:nil];
     [self setScoreLabel:nil];
+    [self setHistoryLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -184,6 +197,7 @@
     [_card11 release];
     [_card12 release];
     [_scoreLabel release];
+    [_historyLabel release];
     [super dealloc];
 }
 @end
