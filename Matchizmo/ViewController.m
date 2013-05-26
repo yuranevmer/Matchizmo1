@@ -8,22 +8,67 @@
 
 #import "ViewController.h"
 #import "PlayingCardDeck.h"
-
+#import "CardMatchingGame.h"
 
 @interface ViewController ()
 
+@property (nonatomic, retain) CardMatchingGame* game;
 @property (retain, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (nonatomic) int flipCount;
-
 @property (nonatomic, retain) PlayingCardDeck* deck;
+@property (nonatomic, retain) NSArray* cardButtons;
+
+@property (retain, nonatomic) IBOutlet UIButton *card1;
+@property (retain, nonatomic) IBOutlet UIButton *card2;
+@property (retain, nonatomic) IBOutlet UIButton *card3;
+@property (retain, nonatomic) IBOutlet UIButton *card4;
+@property (retain, nonatomic) IBOutlet UIButton *card5;
+@property (retain, nonatomic) IBOutlet UIButton *card6;
+@property (retain, nonatomic) IBOutlet UIButton *card7;
+@property (retain, nonatomic) IBOutlet UIButton *card8;
+@property (retain, nonatomic) IBOutlet UIButton *card9;
+@property (retain, nonatomic) IBOutlet UIButton *card10;
+@property (retain, nonatomic) IBOutlet UIButton *card11;
+@property (retain, nonatomic) IBOutlet UIButton *card12;
+
+-(void) updateUI;
+
 @end
 
 
 @implementation ViewController
 
+@synthesize game = _game;
 @synthesize flipsLabel;
 @synthesize flipCount = _flipCount;
 @synthesize deck = _deck;
+@synthesize cardButtons = _cardButtons;
+@synthesize card1 = _card1;
+@synthesize card2 = _card2;
+@synthesize card3 = _card3;
+@synthesize card4 = _card4;
+@synthesize card5 = _card5;
+@synthesize card6 = _card6;
+@synthesize card7 = _card7;
+@synthesize card8 = _card8;
+@synthesize card9 = _card9;
+@synthesize card10 = _card10;
+@synthesize card11 = _card11;
+@synthesize card12 = _card12;
+
+-(CardMatchingGame*) game 
+{
+    if(!_game) _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count usingDeck:self.deck];
+    return _game;
+}
+
+-(NSArray*) cardButtons
+{
+    _cardButtons = [[NSArray alloc] initWithObjects:_card1,_card2,self.card3,self.card4,self.card5,self.card6,self.card7,self.card8,self.card9,self.card10,self.card11,self.card12,nil];
+    return _cardButtons;
+}
+
+
 -(void) setFlipCount:(int)flipCount
 {
     _flipCount = flipCount;
@@ -36,34 +81,34 @@
     return _deck;
 }
 
-- (IBAction)flipCard:(UIButton*)sender {
-    if (!sender.isSelected) {
-        NSString* newCardTitle = [self.deck drawRandomCard].contents;
-        [sender setTitle:newCardTitle forState: UIControlStateSelected];
-        sender.selected = YES;
-    } else {
-        sender.selected = NO;
-    }
-    self.flipCount++;
+-(void) setCardButtons:(NSArray *)cardButtons
+{
+    _cardButtons = cardButtons;
+    [self updateUI];
 }
 
+-(void) updateUI
+{
+    for (UIButton* cardButton in self.cardButtons) {
+        Card* card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
+        [cardButton setTitle:card.contents forState:UIControlStateSelected];
+        [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
+        cardButton.selected = card.isFaceUp;
+        cardButton.enabled = !card.isUnplayable;
+        cardButton.alpha = card.isUnplayable ? 0.3 : 1;
+    }
+    
+    
+    
+    
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- (IBAction)flipCard:(UIButton*)sender 
+{
+    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
+    self.flipCount++;
+    [self updateUI];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -76,12 +121,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)viewDidUnload
 {
     [self setFlipsLabel:nil];
+    [self setCard1:nil];
+    [self setCard2:nil];
+    [self setCard3:nil];
+    [self setCard4:nil];
+    [self setCard5:nil];
+    [self setCard6:nil];
+    [self setCard7:nil];
+    [self setCard8:nil];
+    [self setCard9:nil];
+    [self setCard10:nil];
+    [self setCard11:nil];
+    [self setCard12:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -115,6 +171,18 @@
 
 - (void)dealloc {
     [flipsLabel release];
+    [_card1 release];
+    [_card2 release];
+    [_card3 release];
+    [_card4 release];
+    [_card5 release];
+    [_card6 release];
+    [_card7 release];
+    [_card8 release];
+    [_card9 release];
+    [_card10 release];
+    [_card11 release];
+    [_card12 release];
     [super dealloc];
 }
 @end
