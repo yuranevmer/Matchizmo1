@@ -120,6 +120,7 @@
         [cardButton setTitle:card.contents forState:UIControlStateSelected];
         [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
         [cardButton setImage:backImage forState:UIControlStateNormal];
+        [cardButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
         cardButton.selected = card.isFaceUp;
         if (cardButton.selected) [cardButton setImage:nil forState:UIControlStateNormal];
         cardButton.enabled = !card.isUnplayable && !card.isFaceUp;
