@@ -12,6 +12,7 @@
 
 @interface ViewController ()
 
+@property (nonatomic) NSUInteger gameMode;
 @property (nonatomic, retain) CardMatchingGame* game;
 @property (retain, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (retain, nonatomic) IBOutlet UILabel *scoreLabel;
@@ -40,6 +41,7 @@
 
 @implementation ViewController
 
+@synthesize gameMode = _gameMode;
 @synthesize game = _game;
 @synthesize flipsLabel;
 @synthesize scoreLabel = _scoreLabel;
@@ -62,7 +64,7 @@
 
 -(CardMatchingGame*) game 
 {
-    if(!_game) _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count usingDeck:self.deck];
+    if(!_game) _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count usingDeck:self.deck gameMode:self.gameMode];
     return _game;
 }
 
@@ -75,7 +77,7 @@
 - (IBAction)newGame:(id)sender {
     self.game = nil;
     self.deck = [[PlayingCardDeck alloc] init];
-    self.game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count usingDeck:self.deck];
+    self.game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count usingDeck:self.deck gameMode:self.gameMode];
     self.flipCount = 0;
     [self updateUI];
 }
@@ -96,6 +98,13 @@
 {
     _cardButtons = cardButtons;
     [self updateUI];
+}
+- (IBAction)gameModeChanged:(UISegmentedControl*)sender {
+    if (sender.selectedSegmentIndex == 0) {
+        self.gameMode = 2;
+    } else if (sender.selectedSegmentIndex == 1) {
+        self.gameMode = 3;
+    }
 }
 
 -(void) updateUI

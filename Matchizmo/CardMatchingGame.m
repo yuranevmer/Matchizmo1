@@ -13,6 +13,7 @@
 @property(nonatomic,retain) NSMutableArray* cards;
 @property(nonatomic) int score;
 @property(nonatomic, retain) NSString* lastFlipResult;
+@property(nonatomic) NSUInteger gameMode;
 @end
 
 @implementation CardMatchingGame
@@ -20,6 +21,7 @@
 @synthesize score = _score;
 @synthesize cards = _cards;
 @synthesize lastFlipResult = _lastFlipResult;
+@synthesize gameMode = _gameMode;
 
 -(NSMutableArray*) cards 
 {
@@ -29,7 +31,7 @@
     return _cards;
 }
 
--(id) initWithCardCount:(NSUInteger)cardCount usingDeck:(Deck *)deck
+-(id) initWithCardCount:(NSUInteger)cardCount usingDeck:(Deck *)deck gameMode: (NSUInteger) gameMode
 {
     if (self == [super init]) {
         for (int i = 0; i < cardCount; i++) {
@@ -40,6 +42,7 @@
                 [self.cards insertObject:card atIndex:i];
             }
         }
+        self.gameMode = gameMode;
     }
     return self;
 }
@@ -59,6 +62,7 @@
     if (!card.isUnplayable) {
         self.lastFlipResult = [NSString stringWithFormat:@"Flipped up %@",card.contents];
         for (Card* otherCard in self.cards) {
+          if (self.gameMode == 2) {
             if (otherCard.isFaceUp && !otherCard.isUnplayable) {
                 int matchScore = [card match:[NSArray arrayWithObject:otherCard]];
                 if (matchScore) {
@@ -72,10 +76,16 @@
                     self.lastFlipResult = [NSString stringWithFormat:@"%@ & %@ don't match! %i point penalty!", card.contents, otherCard.contents, MISMATCH_PENALTY];
                 }
             }
+          }
         }
         self.score -= FLIP_COST;
     }
     card.faceUp = !card.isFaceUp;
+}
+-(void) setGameMode:(NSUInteger)gameMode
+{
+    if (gameMode != 2 && gameMode != 3) gameMode = 2;
+    _gameMode = gameMode;
 }
 
 -(NSString*) lastFlipResult

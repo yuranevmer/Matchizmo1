@@ -11,7 +11,7 @@
 
 @interface CardMatchingGame : NSObject
 
--(id) initWithCardCount:(NSUInteger)cardCount usingDeck:(Deck*) deck;
+-(id) initWithCardCount:(NSUInteger)cardCount usingDeck:(Deck*) deck gameMode:(NSUInteger)gameMode;
 -(void) flipCardAtIndex:(NSUInteger)index;
 -(Card*) cardAtIndex:(NSUInteger)index;
 
