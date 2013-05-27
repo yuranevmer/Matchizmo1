@@ -42,6 +42,7 @@
 
 @implementation ViewController
 
+@synthesize gameModeSegmentedControl = _gameModeSegmentedControl;
 @synthesize gameMode = _gameMode;
 @synthesize game = _game;
 @synthesize flipsLabel;
