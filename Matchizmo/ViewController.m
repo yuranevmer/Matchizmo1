@@ -17,6 +17,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (retain, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (retain, nonatomic) IBOutlet UILabel *historyLabel;
+@property (retain, nonatomic) IBOutlet UISegmentedControl *gameModeSegmentedControl;
 @property (nonatomic) int flipCount;
 @property (nonatomic, retain) PlayingCardDeck* deck;
 @property (nonatomic, retain) NSArray* cardButtons;
@@ -62,11 +63,13 @@
 @synthesize card11 = _card11;
 @synthesize card12 = _card12;
 
+/*
 -(CardMatchingGame*) game 
 {
     if(!_game) _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count usingDeck:self.deck gameMode:self.gameMode];
     return _game;
 }
+ */
 
 -(NSArray*) cardButtons
 {
@@ -80,6 +83,7 @@
     self.game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count usingDeck:self.deck gameMode:self.gameMode];
     self.flipCount = 0;
     [self updateUI];
+    self.gameModeSegmentedControl.enabled = YES;
 }
 
 -(void) setFlipCount:(int)flipCount
@@ -105,6 +109,7 @@
     } else if (sender.selectedSegmentIndex == 1) {
         self.gameMode = 3;
     }
+    [self newGame:[NSNull null]];
 }
 
 -(void) updateUI
@@ -128,6 +133,8 @@
 {
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     self.flipCount++;
+    self.gameModeSegmentedControl.enabled = NO;
+    self.gameModeSegmentedControl.alpha = 0.7;
     [self updateUI];
 }
 
@@ -142,6 +149,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self newGame:nil];
 }
 
 - (void)viewDidUnload
@@ -161,6 +169,7 @@
     [self setCard12:nil];
     [self setScoreLabel:nil];
     [self setHistoryLabel:nil];
+    [self setGameModeSegmentedControl:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -208,6 +217,7 @@
     [_card12 release];
     [_scoreLabel release];
     [_historyLabel release];
+    [_gameModeSegmentedControl release];
     [super dealloc];
 }
 @end

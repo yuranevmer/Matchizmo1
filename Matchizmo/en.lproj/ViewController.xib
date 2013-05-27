@@ -477,7 +477,7 @@
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUISegmentedControl" id="236300358">
+					<object class="IBUISegmentedControl" id="709228049">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{226, 324}, {74, 44}}</string>
@@ -657,6 +657,14 @@
 					<int key="connectionID">73</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">gameModeSegmentedControl</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="709228049"/>
+					</object>
+					<int key="connectionID">77</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">flipCard:</string>
 						<reference key="source" ref="1056021553"/>
@@ -776,7 +784,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">gameModeChanged:</string>
-						<reference key="source" ref="236300358"/>
+						<reference key="source" ref="709228049"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">13</int>
 					</object>
@@ -823,7 +831,7 @@
 							<reference ref="580222915"/>
 							<reference ref="642270825"/>
 							<reference ref="282644578"/>
-							<reference ref="236300358"/>
+							<reference ref="709228049"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -914,7 +922,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">75</int>
-						<reference key="object" ref="236300358"/>
+						<reference key="object" ref="709228049"/>
 						<reference key="parent" ref="774585933"/>
 					</object>
 				</array>
@@ -960,7 +968,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">76</int>
+			<int key="maxID">77</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1000,6 +1008,7 @@
 						<string key="card8">UIButton</string>
 						<string key="card9">UIButton</string>
 						<string key="flipsLabel">UILabel</string>
+						<string key="gameModeSegmentedControl">UISegmentedControl</string>
 						<string key="historyLabel">UILabel</string>
 						<string key="scoreLabel">UILabel</string>
 					</dictionary>
@@ -1055,6 +1064,10 @@
 						<object class="IBToOneOutletInfo" key="flipsLabel">
 							<string key="name">flipsLabel</string>
 							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="gameModeSegmentedControl">
+							<string key="name">gameModeSegmentedControl</string>
+							<string key="candidateClassName">UISegmentedControl</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="historyLabel">
 							<string key="name">historyLabel</string>
