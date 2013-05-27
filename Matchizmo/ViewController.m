@@ -114,11 +114,14 @@
 
 -(void) updateUI
 {
+    UIImage* backImage = [UIImage imageNamed:@"lock.png"];
     for (UIButton* cardButton in self.cardButtons) {
         Card* card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
         [cardButton setTitle:card.contents forState:UIControlStateSelected];
         [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
+        [cardButton setImage:backImage forState:UIControlStateNormal];
         cardButton.selected = card.isFaceUp;
+        if (cardButton.selected) [cardButton setImage:nil forState:UIControlStateNormal];
         cardButton.enabled = !card.isUnplayable && !card.isFaceUp;
         cardButton.alpha = card.isUnplayable ? 0.3 : 1;
     }
