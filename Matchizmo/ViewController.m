@@ -74,6 +74,7 @@
 
 - (IBAction)newGame:(id)sender {
     self.game = nil;
+    self.deck = [[PlayingCardDeck alloc] init];
     self.game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count usingDeck:self.deck];
     self.flipCount = 0;
     [self updateUI];
