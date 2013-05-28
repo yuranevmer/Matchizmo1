@@ -10,6 +10,7 @@
 
 #import "ViewController.h"
 
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -26,8 +27,18 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
-    [self.window addSubview:self.viewController.view];
+    
+    
+    //self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
+    //self.viewController = [[UITabBarController alloc] init];
+    UIViewController* controller1 = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    UIViewController* controller2 = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    
+    self.tabBarController = [[[UITabBarController alloc] init] autorelease];
+    self.tabBarController.viewControllers = @[controller1, controller2];
+    
+    self.window.rootViewController = self.tabBarController;
+    //[self.window addSubview:self.viewController.view];
     [self.window makeKeyAndVisible];
     return YES;
 }

@@ -42,6 +42,7 @@
 
 @implementation ViewController
 
+
 @synthesize gameModeSegmentedControl = _gameModeSegmentedControl;
 @synthesize gameMode = _gameMode;
 @synthesize game = _game;
@@ -71,6 +72,16 @@
     return _game;
 }
  */
+-(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil] ) {
+        UIImage* tabImage = [UIImage imageNamed:@"first.png"];
+        UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:@"Matchizmo" image:tabImage tag:0];
+        self.tabBarItem = item;
+    }
+    return self;
+}
+
 
 -(NSArray*) cardButtons
 {
@@ -156,7 +167,6 @@
     [super viewDidLoad];
     [self newGame:nil];
 }
-
 - (void)viewDidUnload
 {
     [self setFlipsLabel:nil];

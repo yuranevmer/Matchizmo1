@@ -20,6 +20,7 @@
 		840154B1174918380050EB5B /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 840154B0174918380050EB5B /* PlayingCard.m */; };
 		840154B4174922CF0050EB5B /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 840154B3174922CE0050EB5B /* PlayingCardDeck.m */; };
 		8429BBC817526E4500B38762 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8429BBC717526E4500B38762 /* CardMatchingGame.m */; };
+		DE51DF5C1754FDBD00082674 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = DE51DF5B1754FDBD00082674 /* first.png */; };
 		DE8F803917538628009394B3 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8F803817538628009394B3 /* lock.png */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		840154B3174922CE0050EB5B /* PlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
 		8429BBC617526E4500B38762 /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
 		8429BBC717526E4500B38762 /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
+		DE51DF5B1754FDBD00082674 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		DE8F803817538628009394B3 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				DE8F803817538628009394B3 /* lock.png */,
+				DE51DF5B1754FDBD00082674 /* first.png */,
 				8401549017490D130050EB5B /* Matchizmo-Info.plist */,
 				8401549117490D130050EB5B /* InfoPlist.strings */,
 				8401549417490D130050EB5B /* main.m */,
@@ -187,6 +190,7 @@
 				8401549317490D130050EB5B /* InfoPlist.strings in Resources */,
 				8401549F17490D140050EB5B /* ViewController.xib in Resources */,
 				DE8F803917538628009394B3 /* lock.png in Resources */,
+				DE51DF5C1754FDBD00082674 /* first.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
