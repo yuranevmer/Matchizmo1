@@ -78,6 +78,7 @@
         UIImage* tabImage = [UIImage imageNamed:@"first.png"];
         UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:@"Matchizmo" image:tabImage tag:0];
         self.tabBarItem = item;
+        [item release];
     }
     return self;
 }
