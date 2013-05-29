@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
-
+#import "SecondCardGameViewController.h"
 
 @implementation AppDelegate
 
@@ -28,8 +28,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    UIViewController* controller1 = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
-    UIViewController* controller2 = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
+    UIViewController* controller1 = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    SecondCardGameViewController* controller2 = [[SecondCardGameViewController alloc] initWithNibName:@"SecondCardGameViewController" bundle:nil];
     
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:controller1, controller2, nil];
