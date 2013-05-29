@@ -12,9 +12,9 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (retain, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) ViewController *viewController;
-@property (strong, nonatomic) UITabBarController *tabBarController;
+@property (retain, nonatomic) ViewController *viewController;
+@property (retain, nonatomic) UITabBarController *tabBarController;
 
 @end

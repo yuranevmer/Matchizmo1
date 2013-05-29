@@ -15,30 +15,28 @@
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
+@synthesize tabBarController = _tabBarController;
 
 - (void)dealloc
 {
     [_window release];
     [_viewController release];
+    [_tabBarController release];
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    
-    
-    //self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
-    //self.viewController = [[UITabBarController alloc] init];
-    UIViewController* controller1 = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-    UIViewController* controller2 = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    UIViewController* controller1 = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
+    UIViewController* controller2 = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
     
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
-    self.tabBarController.viewControllers = @[controller1, controller2];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:controller1, controller2, nil];
     
-    self.window.rootViewController = self.tabBarController;
-    //[self.window addSubview:self.viewController.view];
+    //self.window.rootViewController = self.tabBarController;
+    [self.window addSubview:self.tabBarController.view];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
