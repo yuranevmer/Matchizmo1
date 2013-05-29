@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlayingCard.h"
+#import "PlayingCardDeck.h"
+#import "CardMatchingGame.h"
 
 @interface SecondCardGameViewController : UIViewController
+
+
+-(void) startNewGame;
 
 @end

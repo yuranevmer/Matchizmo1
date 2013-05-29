@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
-
+#import "SecondCardGameViewController.h"
 
 @implementation AppDelegate
 
@@ -32,7 +32,7 @@
     //self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
     //self.viewController = [[UITabBarController alloc] init];
     UIViewController* controller1 = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-    UIViewController* controller2 = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    SecondCardGameViewController* controller2 = [[SecondCardGameViewController alloc] initWithNibName:@"SecondCardGameViewController" bundle:nil];
     
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.viewControllers = @[controller1, controller2];
