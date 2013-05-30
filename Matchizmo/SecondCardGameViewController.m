@@ -11,6 +11,9 @@
 
 
 #import "SecondCardGameViewController.h"
+#import "ContainerView.h"
+
+
 
 @interface SecondCardGameViewController ()
 
@@ -53,19 +56,25 @@
     int width = 30;     int horisontalBorder = 10;
     int height = 50;    int verticalBorder = 10;
     
-    
+    ContainerView* container = [[ContainerView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:container];
     
     for (int i = 0; i < 2; i++) {
-        CGRect frame = CGRectMake(width *i, height*i, width, height);
+        CGRect frame = CGRectMake(0, 0, width, height);
         UIButton* button = [[UIButton alloc] initWithFrame:frame];
         button.backgroundColor = [UIColor redColor];
         //UILabel* label = [[UILabel alloc] initWithFrame:frame];
-        [self.view addSubview:button];
+        [container addSubview:button];
     }
     
 }
 
 
+-(void) loadView
+{
+    [super loadView];
+    [self setupUI];
+}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -80,7 +89,6 @@
 
 - (void)viewDidLoad
 {
-    [self setupUI];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

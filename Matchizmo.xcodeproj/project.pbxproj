@@ -22,6 +22,7 @@
 		8429BBC817526E4500B38762 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8429BBC717526E4500B38762 /* CardMatchingGame.m */; };
 		DE0654F3175631E40098A8AA /* SecondCardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0654F1175631E40098A8AA /* SecondCardGameViewController.m */; };
 		DE0654F4175631E40098A8AA /* SecondCardGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE0654F2175631E40098A8AA /* SecondCardGameViewController.xib */; };
+		DE216BAD17575B8800D0F1BA /* ContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE216BAC17575B8800D0F1BA /* ContainerView.m */; };
 		DE51DF5C1754FDBD00082674 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = DE51DF5B1754FDBD00082674 /* first.png */; };
 		DE8F803917538628009394B3 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8F803817538628009394B3 /* lock.png */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,8 @@
 		DE0654F0175631E40098A8AA /* SecondCardGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondCardGameViewController.h; sourceTree = "<group>"; };
 		DE0654F1175631E40098A8AA /* SecondCardGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondCardGameViewController.m; sourceTree = "<group>"; };
 		DE0654F2175631E40098A8AA /* SecondCardGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondCardGameViewController.xib; sourceTree = "<group>"; };
+		DE216BAB17575B8800D0F1BA /* ContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerView.h; sourceTree = "<group>"; };
+		DE216BAC17575B8800D0F1BA /* ContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerView.m; sourceTree = "<group>"; };
 		DE51DF5B1754FDBD00082674 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		DE8F803817538628009394B3 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +108,8 @@
 				DE0654F0175631E40098A8AA /* SecondCardGameViewController.h */,
 				DE0654F1175631E40098A8AA /* SecondCardGameViewController.m */,
 				DE0654F2175631E40098A8AA /* SecondCardGameViewController.xib */,
+				DE216BAB17575B8800D0F1BA /* ContainerView.h */,
+				DE216BAC17575B8800D0F1BA /* ContainerView.m */,
 				8401549A17490D130050EB5B /* ViewController.h */,
 				8401549B17490D130050EB5B /* ViewController.m */,
 				8401549717490D130050EB5B /* AppDelegate.h */,
@@ -219,6 +224,7 @@
 				840154B4174922CF0050EB5B /* PlayingCardDeck.m in Sources */,
 				8429BBC817526E4500B38762 /* CardMatchingGame.m in Sources */,
 				DE0654F3175631E40098A8AA /* SecondCardGameViewController.m in Sources */,
+				DE216BAD17575B8800D0F1BA /* ContainerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
