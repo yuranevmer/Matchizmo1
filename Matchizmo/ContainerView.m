@@ -23,7 +23,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        if (!_views) {
+            _views = [[NSMutableArray alloc] init];
+        }
     }
     return self;
 }
@@ -39,9 +41,9 @@
 
 -(void) addSubview:(UIView *)view
 {
-    //[super addSubview:view];
-    [self.views addObject:view];
-    [self setNeedsDisplay];
+    [super addSubview:view];
+    //[self.views addObject:view];
+    //[self setNeedsDisplay];
 }
 -(void) removeObjectFromViewsAtIndex:(NSUInteger)index
 {

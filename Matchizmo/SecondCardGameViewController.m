@@ -24,7 +24,7 @@
 
 @property CardMatchingGame* game;
 @property NSMutableArray* cardButtons;
-
+@property (nonatomic, retain) ContainerView* containerView;
 
 
 
@@ -33,7 +33,7 @@
 @implementation SecondCardGameViewController
 @synthesize game = _game;
 @synthesize cardButtons = _cardButtons;
-
+@synthesize containerView = _containerView;
 
 
 #define CARD_COUNT 12
@@ -60,9 +60,10 @@
     [self.view addSubview:container];
     
     for (int i = 0; i < 2; i++) {
-        CGRect frame = CGRectMake(0, 0, width, height);
+        CGRect frame = CGRectMake(0, 0, width*3, height*3);
         UIButton* button = [[UIButton alloc] initWithFrame:frame];
         button.backgroundColor = [UIColor redColor];
+        //[self.view addSubview:button];
         //UILabel* label = [[UILabel alloc] initWithFrame:frame];
         [container addSubview:button];
     }
@@ -83,6 +84,7 @@
     if (self) {
         UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:@"SUPER" image:nil tag:0];
         self.tabBarItem = item;
+        
     }
     return self;
 }
