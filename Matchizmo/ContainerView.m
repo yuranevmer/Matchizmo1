@@ -10,77 +10,102 @@
 
 @implementation ContainerView
 
-@synthesize views = _views;
-@synthesize centered = _centered;
-@synthesize horisontalSpacing = _horisontalSpacing;
+
+@synthesize centered;
+@synthesize horisontalSpacing;
+@synthesize verticalSpacing;
+@synthesize topBorder, rightBorder;
 
 
-
-
-
+#pragma mark -
+#pragma mark Methods for overriding
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        if (!_views) {
-            _views = [[NSMutableArray alloc] init];
-        }
+       // self.contentSize = CGSizeMake(self.bounds.size.width, 1000);
+        [self setBackgroundColor:[UIColor grayColor]];
+        //[self setScrollIndicatorInsets:UIEdgeInsetsMake(0, 0, 0, -25)];
+        //[self setIndicatorStyle:UIScrollViewIndicatorStyleBlack];
     }
     return self;
-}
-
--(void) setViews:(NSMutableArray *)views
-{
-    [views retain];
-    [_views release];
-    _views = views;
-    
-    [self setNeedsDisplay];
 }
 
 -(void) addSubview:(UIView *)view
 {
     [super addSubview:view];
-    //[self.views addObject:view];
-    //[self setNeedsDisplay];
-}
--(void) removeObjectFromViewsAtIndex:(NSUInteger)index
-{
-    if (index >= self.views.count) {
-        NSLog(@"invalid index");
-    }
-    
-    [self.views removeObjectAtIndex:index];
     [self setNeedsDisplay];
 }
+-(void) willRemoveSubview:(UIView *)subview{
+    [super willRemoveSubview:subview];
+    [self performSelector:@selector(setNeedsDisplay) withObject:self afterDelay:0.1];
+}
 
 
+#pragma mark -
+#pragma mark drawing
 
 - (void)drawRect:(CGRect)rect
 {
-    if (self.views.count) {
+    //NSLog(@"drawRect   %i", self.subviews.count);
+    if (self.subviews.count) {
         CGSize containerSize = self.bounds.size;
-        CGSize viewSize = [[self.views objectAtIndex:0] bounds].size;
+        CGSize viewSize = [[self.subviews objectAtIndex:0] bounds].size;
+        int width = viewSize.width;    
+        int height = viewSize.height; 
         
-        int horCount = round(containerSize.width / viewSize.width);
-        int verCount = round(self.views.count / horCount);
+        int horCount = floor(containerSize.width / (viewSize.width + self.horisontalSpacing));
+        if (horCount == 0) {
+            horCount = 1;
+        }
+        CGFloat newRightBorder = (containerSize.width - (width * horCount + self.horisontalSpacing*(horCount-1))) / 2;
+        CGFloat rBorder = (self.centered) ? newRightBorder : self.rightBorder;
+        CGFloat tBorder = self.topBorder;
         
-        int width = 30;     int horisontalBorder = 10;
-        int height = 50;    int verticalBorder = 10;
-
-        
-        
-        for (int i = 0; horCount; i++) {
-            for (int j = 0; verCount; j++) {
-                CGRect frame = CGRectMake(width * j, height * i, width, height);
-                UIView* view = [self.views objectAtIndex:i];
+        int totalCounter = 0;
+        int rowCounter = 0;        
+        while (totalCounter < self.subviews.count) {
+            for (int i = 0; i<horCount; i++) {
+                CGRect frame = CGRectMake(rBorder + (i*(width + self.horisontalSpacing)), tBorder + rowCounter*(height+self.verticalSpacing), width, height);
+                UIView* view = [self.subviews objectAtIndex:totalCounter];
                 view.frame = frame;
+                totalCounter++;
+                if (totalCounter == self.subviews.count) break;
             }
-            
+            rowCounter++;
         }
     }
-    
+}
+
+
+#pragma mark -
+#pragma mark setters
+
+-(void) setCentered:(BOOL)cent
+{
+    centered = cent;
+    [self setNeedsDisplay];
+}
+-(void) setHorisontalSpacing:(CGFloat)newHorisontalSpacing
+{
+    horisontalSpacing = newHorisontalSpacing;
+    [self setNeedsDisplay];
+}
+-(void) setVerticalSpacing:(CGFloat)newVerticalSpacing
+{
+    verticalSpacing = newVerticalSpacing;
+    [self setNeedsDisplay];
+}
+-(void) setRightBorder:(CGFloat)rb
+{
+    rightBorder = rb;
+    [self setNeedsDisplay];
+}
+-(void) setTopBorder:(CGFloat)tb
+{
+    topBorder = tb;
+    [self setNeedsDisplay];
 }
 
 

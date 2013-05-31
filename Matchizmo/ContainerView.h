@@ -10,8 +10,12 @@
 
 @interface ContainerView : UIView
 
-@property(retain,nonatomic) NSMutableArray* views;
+
 @property(nonatomic) CGFloat horisontalSpacing;
+@property(nonatomic) CGFloat verticalSpacing;
 @property(nonatomic) BOOL centered;
+@property(nonatomic) CGFloat topBorder;
+@property(nonatomic) CGFloat rightBorder;
+
 
 @end

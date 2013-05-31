@@ -29,7 +29,7 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     UIViewController* controller1 = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-    SecondCardGameViewController* controller2 = [[SecondCardGameViewController alloc] initWithNibName:@"SecondCardGameViewController" bundle:nil];
+    SecondCardGameViewController* controller2 = [[SecondCardGameViewController alloc] initWithNibName:nil bundle:nil];
     
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:controller1, controller2, nil];

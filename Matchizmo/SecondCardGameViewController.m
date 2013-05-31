@@ -56,18 +56,41 @@
     int width = 30;     int horisontalBorder = 10;
     int height = 50;    int verticalBorder = 10;
     
-    ContainerView* container = [[ContainerView alloc] initWithFrame:self.view.bounds];
-    [self.view addSubview:container];
+    self.containerView = [[ContainerView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:self.containerView];
     
-    for (int i = 0; i < 2; i++) {
-        CGRect frame = CGRectMake(0, 0, width*3, height*3);
-        UIButton* button = [[UIButton alloc] initWithFrame:frame];
-        button.backgroundColor = [UIColor redColor];
+    for (int i = 0; i <=12; i++) {
+        CGRect frame = CGRectMake(0, 0, 50, 50);
+        UILabel* label = [[UILabel alloc] initWithFrame:frame];
+        label.text = [NSString stringWithFormat:@"%i",i];
         //[self.view addSubview:button];
         //UILabel* label = [[UILabel alloc] initWithFrame:frame];
-        [container addSubview:button];
+        [self.containerView addSubview:label];
     }
     
+    
+    self.containerView.horisontalSpacing = 30;
+    self.containerView.verticalSpacing = 10;
+    self.containerView.centered = YES;
+    self.containerView.topBorder = 100;
+    
+    
+    CGRect frame = CGRectMake(20, 20, 200, 20);
+    UIButton* b = [[UIButton alloc] initWithFrame:frame];
+    b.backgroundColor = [UIColor yellowColor];
+    b.titleLabel.text = @"trattata";
+    [self.view addSubview:b];
+    
+    [b addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+
+}
+-(void)click:(id) sender{
+    
+    NSLog(@"Click ---");
+    UIView* v = [self.containerView.subviews objectAtIndex:0];
+    [v removeFromSuperview];  
+    //self.containerView.centered = NO;
+    //self.containerView.topBorder = 200;
 }
 
 
@@ -92,13 +115,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 @end
