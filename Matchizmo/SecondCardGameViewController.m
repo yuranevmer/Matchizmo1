@@ -13,7 +13,7 @@
 #import "SecondCardGameViewController.h"
 #import "ContainerView.h"
 #import "PlayingCardView.h"
-
+#import "PlayingCard.h"
 
 @interface SecondCardGameViewController ()
 
@@ -44,6 +44,17 @@
     self.game = nil;
     PlayingCardDeck* newDeck = [[[PlayingCardDeck alloc] init] autorelease];
     self.game = [[CardMatchingGame alloc] initWithCardCount:CARD_COUNT usingDeck:newDeck gameMode:2];
+    
+    for (int i = 0; i<CARD_COUNT; i++) {
+        CGRect frame = CGRectMake(0, 0, 60, 80);
+        PlayingCardView* p = [[PlayingCardView alloc] initWithFrame:frame];
+        [self.containerView addSubview:p];
+        
+        
+        PlayingCard* card = [self.game cardAtIndex:i];
+        
+    }
+    
 }
 
 
@@ -59,20 +70,19 @@
     self.containerView = [[ContainerView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.containerView];
     
+    /*
     for (int i = 1; i <=12; i++) {
-        
-        //UILabel* label = [[UILabel alloc] initWithFrame:frame];
-        //label.text = [NSString stringWithFormat:@"%i",i];
-        //[self.view addSubview:button];
-        //UILabel* label = [[UILabel alloc] initWithFrame:frame];
         
         
         CGRect frame = CGRectMake(0, 0, 60, 80);
         PlayingCardView* card = [[PlayingCardView alloc] initWithFrame:frame];
-        card.rank = 10;
-        card.suit = [NSString stringWithFormat:@"%i",i];
+        card.rank = i;
+        card.suit = @"♥";
         [self.containerView addSubview:card];
     }
+    */
+    
+    
     
     
     self.containerView.horisontalSpacing = 10;
@@ -92,11 +102,15 @@
 }
 -(void)click:(id) sender{
     
+    [self startNewGame];
+    
+    /*
     NSLog(@"Click ---");
     UIView* v = [self.containerView.subviews objectAtIndex:0];
     [v removeFromSuperview];  
     //self.containerView.centered = NO;
     //self.containerView.topBorder = 200;
+     */
 }
 
 

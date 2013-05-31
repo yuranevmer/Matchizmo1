@@ -12,6 +12,9 @@
 
 -(void) setup;
 -(void) drawCard;
+
+
+
 @end
 
 
@@ -41,17 +44,6 @@
     self.backgroundColor = [UIColor clearColor];
 }
 
-
-
-
-
-
-
-
-
-
-
-
 - (void)drawRect:(CGRect)rect
 {
     UIBezierPath* roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:10];
@@ -67,10 +59,30 @@
 
 -(void) drawCard
 {
-    [[UIColor redColor] setFill];
-    CGRect cardFrame = CGRectMake(5, 2, self.bounds.size.width, self.bounds.size.height);
+    
+    if ([self.suit isEqualToString:@"♠"] || [self.suit isEqualToString:@"♣"]) {
+        [[UIColor blackColor] setFill];
+    } else {
+        [[UIColor redColor] setFill];
+    }
+    
+    CGRect rankFrame = CGRectMake(5, 2, 10, 10);
+    NSString* rank = [self rankAsString];
+    [rank drawInRect:rankFrame withFont:[UIFont systemFontOfSize:14]];
+    
+    CGRect suitFrame = CGRectMake(0, 20, 10, 10);
     NSString* suit = self.suit;
-    [suit drawInRect:cardFrame withFont:[UIFont systemFontOfSize:14]];
+    [suit drawInRect:suitFrame withFont:[UIFont systemFontOfSize:14]];
+    
+    
+    
+}
+
+-(NSString*) rankAsString
+{
+    NSArray* rankStrings = [[NSArray alloc] initWithObjects:@"?", @"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"10",@"J",@"Q",@"K",nil];
+    NSString* str = [rankStrings objectAtIndex:self.rank];
+    return str;
 }
 
 
