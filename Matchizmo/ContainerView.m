@@ -24,10 +24,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-       // self.contentSize = CGSizeMake(self.bounds.size.width, 1000);
         [self setBackgroundColor:[UIColor grayColor]];
-        //[self setScrollIndicatorInsets:UIEdgeInsetsMake(0, 0, 0, -25)];
-        //[self setIndicatorStyle:UIScrollViewIndicatorStyleBlack];
     }
     return self;
 }

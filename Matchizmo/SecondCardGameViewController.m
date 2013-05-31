@@ -12,7 +12,7 @@
 
 #import "SecondCardGameViewController.h"
 #import "ContainerView.h"
-
+#import "PlayingCardView.h"
 
 
 @interface SecondCardGameViewController ()
@@ -39,7 +39,7 @@
 #define CARD_COUNT 12
 
 
--(void) newGame
+-(void) startNewGame
 {
     self.game = nil;
     PlayingCardDeck* newDeck = [[[PlayingCardDeck alloc] init] autorelease];
@@ -59,17 +59,23 @@
     self.containerView = [[ContainerView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.containerView];
     
-    for (int i = 0; i <=12; i++) {
-        CGRect frame = CGRectMake(0, 0, 50, 50);
-        UILabel* label = [[UILabel alloc] initWithFrame:frame];
-        label.text = [NSString stringWithFormat:@"%i",i];
+    for (int i = 1; i <=12; i++) {
+        
+        //UILabel* label = [[UILabel alloc] initWithFrame:frame];
+        //label.text = [NSString stringWithFormat:@"%i",i];
         //[self.view addSubview:button];
         //UILabel* label = [[UILabel alloc] initWithFrame:frame];
-        [self.containerView addSubview:label];
+        
+        
+        CGRect frame = CGRectMake(0, 0, 60, 80);
+        PlayingCardView* card = [[PlayingCardView alloc] initWithFrame:frame];
+        card.rank = 10;
+        card.suit = [NSString stringWithFormat:@"%i",i];
+        [self.containerView addSubview:card];
     }
     
     
-    self.containerView.horisontalSpacing = 30;
+    self.containerView.horisontalSpacing = 10;
     self.containerView.verticalSpacing = 10;
     self.containerView.centered = YES;
     self.containerView.topBorder = 100;
