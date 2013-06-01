@@ -19,7 +19,7 @@
 
 -(void) setupUI;
 -(void) updateUI;
--(void) relayoutCards;
+
 
 
 @property (nonatomic,retain) CardMatchingGame* game;
@@ -52,16 +52,12 @@
     for (int i = 0; i<CARD_COUNT; i++) {
         CGRect frame = CGRectMake(0, 0, 60, 80);
         PlayingCardView* p = [[PlayingCardView alloc] initWithFrame:frame];
-        
-        
         PlayingCard* card = (PlayingCard*)[self.game cardAtIndex:i];
         p.suit = card.suit;
         p.rank = card.rank;
         
-        /*
         UITapGestureRecognizer* recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(flipCard:)];
         [p addGestureRecognizer:recognizer];
-        */
         
         [self.containerView addSubview:p];
     }

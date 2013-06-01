@@ -46,13 +46,14 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    UIBezierPath* roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:10];
-    [roundedRect addClip];
+   // UIBezierPath* roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:10];
+    //[roundedRect addClip];
+    
     [[UIColor whiteColor] setFill];
     UIRectFill(self.bounds);
     
     [[UIColor blackColor] setStroke];
-    [roundedRect stroke];
+   // [roundedRect stroke];
     
     [self drawCard];
 }
