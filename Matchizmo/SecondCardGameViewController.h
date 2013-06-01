@@ -15,5 +15,6 @@
 
 
 -(void) startNewGame;
+-(void) updateUI;
 
 @end

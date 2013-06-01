@@ -25,6 +25,7 @@
 @synthesize contents = _contents;
 @synthesize suit = _suit;
 @synthesize rank = _rank;
+@synthesize isFaceUp = _isFaceUp;
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -33,7 +34,6 @@
     if (self) {
         [self setup];
         
-        self.suit = @"1";
     }
     return self;
 }
@@ -59,6 +59,12 @@
 
 -(void) drawCard
 {
+    if (!self.isFaceUp) {
+        UIImage* back = [UIImage imageNamed:@"lock.png"];
+        CGRect frame = CGRectInset(self.bounds, (self.bounds.size.width-back.size.width)/2, (self.bounds.size.height - back.size.height)/2);
+        [back drawInRect:frame];
+        return;
+    }
     
     if ([self.suit isEqualToString:@"♠"] || [self.suit isEqualToString:@"♣"]) {
         [[UIColor blackColor] setFill];
@@ -66,21 +72,17 @@
         [[UIColor redColor] setFill];
     }
     
-    CGRect rankFrame = CGRectMake(5, 2, 10, 10);
     NSString* rank = [self rankAsString];
-    [rank drawInRect:rankFrame withFont:[UIFont systemFontOfSize:14]];
+    [rank drawAtPoint:CGPointMake(5, 2) withFont:[UIFont systemFontOfSize:14]];
     
     CGRect suitFrame = CGRectMake(0, 20, 10, 10);
     NSString* suit = self.suit;
     [suit drawInRect:suitFrame withFont:[UIFont systemFontOfSize:14]];
-    
-    
-    
 }
 
 -(NSString*) rankAsString
 {
-    NSArray* rankStrings = [[NSArray alloc] initWithObjects:@"?", @"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"10",@"J",@"Q",@"K",nil];
+    NSArray* rankStrings = [[NSArray alloc] initWithObjects:@"?", @"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K",nil];
     NSString* str = [rankStrings objectAtIndex:self.rank];
     return str;
 }
@@ -101,9 +103,9 @@
     [self setNeedsDisplay];
 }
 
--(void) setIsFaceup:(BOOL)f
+-(void) setIsFaceUp:(BOOL)f
 {
-    _isFaceup = f;
+    _isFaceUp = f;
     [self setNeedsDisplay];
 }
 

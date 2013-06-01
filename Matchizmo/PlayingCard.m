@@ -59,7 +59,7 @@
 @synthesize rank = _rank;
 +(NSArray*) rankStrings
 {
-    NSArray* rankStrings = [[NSArray alloc] initWithObjects:@"?", @"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"10",@"J",@"Q",@"K",nil];
+    NSArray* rankStrings = [[NSArray alloc] initWithObjects:@"?", @"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K",nil];
     return rankStrings;
 }
 

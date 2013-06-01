@@ -22,8 +22,8 @@
 -(void) relayoutCards;
 
 
-@property CardMatchingGame* game;
-@property NSMutableArray* cardButtons;
+@property (nonatomic,retain) CardMatchingGame* game;
+@property (nonatomic,retain) NSMutableArray* cardButtons;
 @property (nonatomic, retain) ContainerView* containerView;
 
 
@@ -41,6 +41,10 @@
 
 -(void) startNewGame
 {
+    
+    for (UIView* v in self.containerView.subviews) {
+        [v removeFromSuperview];
+    }
     self.game = nil;
     PlayingCardDeck* newDeck = [[[PlayingCardDeck alloc] init] autorelease];
     self.game = [[CardMatchingGame alloc] initWithCardCount:CARD_COUNT usingDeck:newDeck gameMode:2];
@@ -48,69 +52,64 @@
     for (int i = 0; i<CARD_COUNT; i++) {
         CGRect frame = CGRectMake(0, 0, 60, 80);
         PlayingCardView* p = [[PlayingCardView alloc] initWithFrame:frame];
+        
+        
+        PlayingCard* card = (PlayingCard*)[self.game cardAtIndex:i];
+        p.suit = card.suit;
+        p.rank = card.rank;
+        
+        /*
+        UITapGestureRecognizer* recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(flipCard:)];
+        [p addGestureRecognizer:recognizer];
+        */
+        
         [self.containerView addSubview:p];
-        
-        
-        PlayingCard* card = [self.game cardAtIndex:i];
-        
     }
     
 }
 
-
-
-
-
+-(void) flipCard:(UITapGestureRecognizer*)sender
+{
+    [self.game flipCardAtIndex:[self.containerView.subviews indexOfObject:sender.view]];
+    
+    [self updateUI];
+    NSLog(@"Tap--- %@", sender);
+       
+}
+-(void) updateUI
+{
+    for (PlayingCardView* p in self.containerView.subviews) {
+        int index = [self.containerView.subviews indexOfObject:p];
+        Card* card = [self.game cardAtIndex:index];
+        p.isFaceUp = card.isFaceUp;
+        if (card.isUnplayable) {
+            p.alpha = 0.3;
+        }
+    }
+}
 
 -(void) setupUI
 {
-    int width = 30;     int horisontalBorder = 10;
-    int height = 50;    int verticalBorder = 10;
     
     self.containerView = [[ContainerView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.containerView];
-    
-    /*
-    for (int i = 1; i <=12; i++) {
-        
-        
-        CGRect frame = CGRectMake(0, 0, 60, 80);
-        PlayingCardView* card = [[PlayingCardView alloc] initWithFrame:frame];
-        card.rank = i;
-        card.suit = @"♥";
-        [self.containerView addSubview:card];
-    }
-    */
-    
-    
-    
     
     self.containerView.horisontalSpacing = 10;
     self.containerView.verticalSpacing = 10;
     self.containerView.centered = YES;
     self.containerView.topBorder = 100;
     
-    
-    CGRect frame = CGRectMake(20, 20, 200, 20);
-    UIButton* b = [[UIButton alloc] initWithFrame:frame];
-    b.backgroundColor = [UIColor yellowColor];
-    b.titleLabel.text = @"trattata";
+    UIButton* b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    b.frame = CGRectMake(30, 20, 100, 30);
+    [b setTitle:@"New Game" forState:UIControlStateNormal];
     [self.view addSubview:b];
-    
+
     [b addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
 
 }
 -(void)click:(id) sender{
     
     [self startNewGame];
-    
-    /*
-    NSLog(@"Click ---");
-    UIView* v = [self.containerView.subviews objectAtIndex:0];
-    [v removeFromSuperview];  
-    //self.containerView.centered = NO;
-    //self.containerView.topBorder = 200;
-     */
 }
 
 
