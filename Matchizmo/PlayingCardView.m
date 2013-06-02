@@ -62,7 +62,9 @@
 {
     if (!self.isFaceUp) {
         UIImage* back = [UIImage imageNamed:@"lock.png"];
-        CGRect frame = CGRectInset(self.bounds, (self.bounds.size.width-back.size.width)/2, (self.bounds.size.height - back.size.height)/2);
+        //CGRect frame = CGRectInset(self.bounds, (self.bounds.size.width-back.size.width)/2, (self.bounds.size.height - back.size.height)/2);
+        CGRect frame = CGRectInset(self.bounds, 10, 10);
+
         [back drawInRect:frame];
         return;
     }

@@ -17,6 +17,7 @@
 
 @interface SecondCardGameViewController ()
 
+
 -(void) setupUI;
 -(void) updateUI;
 -(void) scaleCards:(UIPinchGestureRecognizer*)pinch;
@@ -28,6 +29,7 @@
 @property (nonatomic, retain) UILabel* scoreLabel;
 @property (nonatomic, retain) UILabel* flipsLabel;
 @property (nonatomic) int flipsCounter;
+@property (nonatomic) float lastScale;
 
 @end
 
@@ -38,6 +40,7 @@
 @synthesize scoreLabel = _scoreLabel;
 @synthesize flipsLabel = _flipsLabel;
 @synthesize flipsCounter;
+@synthesize lastScale;
 
 #define CARD_COUNT 12
 
@@ -179,14 +182,19 @@
 
 -(void)scaleCards:(UIPinchGestureRecognizer *)pinch
 {
-    
-    NSLog(@"scale %f", pinch.scale);
+    if (!self.lastScale) {
+        self.lastScale = 1.0;
+    }
+    float scale = 1 + (lastScale-pinch.scale);
+    NSLog(@"scale %f", scale);
     //self.view.transform = CGAffineTransformScale(CGAffineTransformIdentity, pinch.scale, pinch.scale);
     
     for (PlayingCardView* p in self.containerView.subviews) {
-        p.transform = CGAffineTransformScale(CGAffineTransformIdentity, pinch.scale, pinch.scale);
+        p.transform = CGAffineTransformScale(CGAffineTransformIdentity, scale, scale);
     }
+    //[pinch setScale:1.0];
     [self.containerView setNeedsDisplay];
+    self.lastScale = pinch.scale;
 }
 
 

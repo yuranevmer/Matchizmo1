@@ -64,9 +64,18 @@
         int rowCounter = 0;        
         while (totalCounter < self.subviews.count) {
             for (int i = 0; i<horCount; i++) {
-                CGRect frame = CGRectMake(rBorder + (i*(width + self.horisontalSpacing)), tBorder + rowCounter*(height+self.verticalSpacing), width, height);
                 UIView* view = [self.subviews objectAtIndex:totalCounter];
+                CGRect frame = CGRectMake(rBorder + (i*(width + self.horisontalSpacing)), tBorder + rowCounter*(height+self.verticalSpacing), width, height);
+                
+                [UIView beginAnimations:nil context:nil];
+                [UIView setAnimationDuration:1];
                 view.frame = frame;
+                //[UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:view cache:YES];
+        
+                [UIView commitAnimations];
+                
+                
+                
                 totalCounter++;
                 if (totalCounter == self.subviews.count) break;
             }
