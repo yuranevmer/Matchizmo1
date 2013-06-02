@@ -19,7 +19,7 @@
 
 -(void) setupUI;
 -(void) updateUI;
-
+-(void) scaleCards:(UIPinchGestureRecognizer*)pinch;
 
 
 @property (nonatomic,retain) CardMatchingGame* game;
@@ -93,6 +93,8 @@
         if (card.isUnplayable) {
             p.alpha = 0.3;
             [p setUserInteractionEnabled:NO];
+            //[p removeFromSuperview];
+            //card.unplayable = NO;
         }
     }
 }
@@ -170,8 +172,23 @@
 {
     [super viewDidLoad];
     
-    
+    UIPinchGestureRecognizer* recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scaleCards:)];
+    [self.view addGestureRecognizer:recognizer];
+
 }
+
+-(void)scaleCards:(UIPinchGestureRecognizer *)pinch
+{
+    
+    NSLog(@"scale %f", pinch.scale);
+    //self.view.transform = CGAffineTransformScale(CGAffineTransformIdentity, pinch.scale, pinch.scale);
+    
+    for (PlayingCardView* p in self.containerView.subviews) {
+        p.transform = CGAffineTransformScale(CGAffineTransformIdentity, pinch.scale, pinch.scale);
+    }
+    [self.containerView setNeedsDisplay];
+}
+
 
 
 
