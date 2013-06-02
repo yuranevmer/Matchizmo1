@@ -25,8 +25,9 @@
 @property (nonatomic,retain) CardMatchingGame* game;
 @property (nonatomic,retain) NSMutableArray* cardButtons;
 @property (nonatomic, retain) ContainerView* containerView;
-
-
+@property (nonatomic, retain) UILabel* scoreLabel;
+@property (nonatomic, retain) UILabel* flipsLabel;
+@property (nonatomic) int flipsCounter;
 
 @end
 
@@ -34,13 +35,20 @@
 @synthesize game = _game;
 @synthesize cardButtons = _cardButtons;
 @synthesize containerView = _containerView;
-
+@synthesize scoreLabel = _scoreLabel;
+@synthesize flipsLabel = _flipsLabel;
+@synthesize flipsCounter;
 
 #define CARD_COUNT 12
 
 
+#pragma mark -
+#pragma mark game logig part
+
 -(void) startNewGame
 {
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: 0"];
+    self.flipsCounter = 0;
     
     for (UIView* v in self.containerView.subviews) {
         [v removeFromSuperview];
@@ -48,15 +56,16 @@
     self.game = nil;
     PlayingCardDeck* newDeck = [[[PlayingCardDeck alloc] init] autorelease];
     self.game = [[CardMatchingGame alloc] initWithCardCount:CARD_COUNT usingDeck:newDeck gameMode:2];
+    [self.game release];
     
     for (int i = 0; i<CARD_COUNT; i++) {
         CGRect frame = CGRectMake(0, 0, 60, 80);
-        PlayingCardView* p = [[PlayingCardView alloc] initWithFrame:frame];
+        PlayingCardView* p = [[[PlayingCardView alloc] initWithFrame:frame] autorelease];
         PlayingCard* card = (PlayingCard*)[self.game cardAtIndex:i];
         p.suit = card.suit;
         p.rank = card.rank;
         
-        UITapGestureRecognizer* recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(flipCard:)];
+        UITapGestureRecognizer* recognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(flipCard:)] autorelease];
         [p addGestureRecognizer:recognizer];
         
         [self.containerView addSubview:p];
@@ -66,28 +75,48 @@
 
 -(void) flipCard:(UITapGestureRecognizer*)sender
 {
+    self.flipsCounter++;
     [self.game flipCardAtIndex:[self.containerView.subviews indexOfObject:sender.view]];
-    
     [self updateUI];
     NSLog(@"Tap--- %@", sender);
        
 }
 -(void) updateUI
 {
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %i", self.game.score];
+    
+    
     for (PlayingCardView* p in self.containerView.subviews) {
         int index = [self.containerView.subviews indexOfObject:p];
         Card* card = [self.game cardAtIndex:index];
         p.isFaceUp = card.isFaceUp;
         if (card.isUnplayable) {
             p.alpha = 0.3;
+            [p setUserInteractionEnabled:NO];
         }
     }
 }
 
+
+-(void) setFlipsCounter:(int)c
+{
+    flipsCounter = c;
+    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %i",self.flipsCounter];
+    [self.flipsLabel sizeToFit];
+}
+
+-(void)click:(id) sender{
+    
+    [self startNewGame];
+}
+
+
+#pragma mark -
+
 -(void) setupUI
 {
     
-    self.containerView = [[ContainerView alloc] initWithFrame:self.view.bounds];
+    self.containerView = [[[ContainerView alloc] initWithFrame:self.view.bounds] autorelease];
     [self.view addSubview:self.containerView];
     
     self.containerView.horisontalSpacing = 10;
@@ -99,15 +128,25 @@
     b.frame = CGRectMake(30, 20, 100, 30);
     [b setTitle:@"New Game" forState:UIControlStateNormal];
     [self.view addSubview:b];
-
-    [b addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
-
-}
--(void)click:(id) sender{
     
-    [self startNewGame];
+    [b addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //additional info Labels
+    self.scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 5, 0, 0)];
+    [self.scoreLabel release];
+    self.scoreLabel.text = @"Score: 0      ";
+    [self.scoreLabel sizeToFit];
+    self.scoreLabel.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.scoreLabel];
+    
+    self.flipsLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 40, 0, 0)];
+    [self.flipsLabel release];
+    self.flipsLabel.text = @"Flips: 0";
+    [self.flipsLabel sizeToFit];
+    self.flipsLabel.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.flipsLabel];
+    
 }
-
 
 -(void) loadView
 {
@@ -130,6 +169,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
 }
 
 

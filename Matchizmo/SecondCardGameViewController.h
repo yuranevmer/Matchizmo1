@@ -14,6 +14,7 @@
 @interface SecondCardGameViewController : UIViewController
 
 
+
 -(void) startNewGame;
 -(void) updateUI;
 

@@ -63,7 +63,7 @@
         self.lastFlipResult = [NSString stringWithFormat:@"Flipped up %@",card.contents];
         for (Card* otherCard in self.cards) {
           if (self.gameMode == 2) {
-            if (otherCard.isFaceUp && !otherCard.isUnplayable) {
+            if (otherCard.isFaceUp && otherCard != card && !otherCard.isUnplayable) {
                 int matchScore = [card match:[NSArray arrayWithObject:otherCard]];
                 if (matchScore) {
                     otherCard.unplayable = YES;
