@@ -69,9 +69,11 @@
                 
                 [UIView beginAnimations:nil context:nil];
                 [UIView setAnimationDuration:1];
+                [UIView setAnimationDelay:0.1 * (self.subviews.count - totalCounter)];
                 view.frame = frame;
                 //[UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:view cache:YES];
-        
+                
+                
                 [UIView commitAnimations];
                 
                 

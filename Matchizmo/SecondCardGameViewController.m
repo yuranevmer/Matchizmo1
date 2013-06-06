@@ -62,6 +62,7 @@
     [self.game release];
     
     for (int i = 0; i<CARD_COUNT; i++) {
+        
         CGRect frame = CGRectMake(0, 0, 60, 80);
         PlayingCardView* p = [[[PlayingCardView alloc] initWithFrame:frame] autorelease];
         PlayingCard* card = (PlayingCard*)[self.game cardAtIndex:i];
